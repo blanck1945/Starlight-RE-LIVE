@@ -1,0 +1,11 @@
+.bg {
+  @apply w-full;
+  @apply absolute;
+  @apply pt-2;
+  height: 65vh;
+}
+
+.hero {
+  @apply h-full;
+  @apply z-0;
+}

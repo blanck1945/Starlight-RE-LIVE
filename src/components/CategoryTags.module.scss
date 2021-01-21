@@ -1,0 +1,9 @@
+.content {
+  @apply flex;
+  @apply items-center;
+  @apply justify-evenly;
+}
+
+.inner {
+  @apply flex;
+}

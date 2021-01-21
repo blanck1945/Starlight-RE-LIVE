@@ -1,0 +1,26 @@
+@import "../styles/variables";
+
+.nav{
+    @apply w-full;
+    @apply bg-white;
+    @apply h-12;
+    @apply flex;
+    @apply justify-between;
+}
+
+.logo{
+    @apply z-30;
+    top: 10px;
+    left: 30%;
+    height: 80px;
+    width: 145px;
+}
+
+
+
+.bgIcon{
+    @apply z-30;
+    @apply mt-3;
+    @apply mr-2;
+    width: 50px;
+}

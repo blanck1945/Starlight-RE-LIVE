@@ -1,0 +1,31 @@
+@import "../../styles/main";
+
+.btn {
+  @apply rounded-md;
+  @apply flex;
+  @apply items-center;
+  @apply text-white;
+  @apply py-6;
+  @apply cursor-pointer;
+  background-color: black;
+  width: 45%;
+  height: 65%;
+
+  p {
+    @apply px-2;
+  }
+
+  .icon {
+    width: 25%;
+    font-size: $font-icon;
+  }
+}
+
+.inner {
+  width: 75%;
+
+  p {
+    font-size: $font-small;
+    @apply px-0;
+  }
+}

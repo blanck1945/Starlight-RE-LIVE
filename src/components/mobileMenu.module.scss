@@ -1,0 +1,17 @@
+@import "../styles/variables";
+
+.bgClose {
+    @apply absolute;
+    @apply z-50;
+    @apply w-full;
+    @apply h-full;
+    @apply duration-300;
+    @apply ease-in-out;
+    transform: translateY(-100%);
+    background-color: $red-light;
+}
+
+.bg{
+    @extend .bgClose;
+    transform: translateY(0);
+}

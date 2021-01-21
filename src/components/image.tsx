@@ -13,7 +13,15 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-const Image = () => {
+interface ImageProps {
+  image: any
+  imgClass?: string
+  divClass?: string
+  func?: React.Dispatch<React.SetStateAction<boolean>>
+  compState?: any
+}
+
+const Image = ({ image, imgClass, func, compState, divClass }: ImageProps) => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
@@ -25,6 +33,18 @@ const Image = () => {
       }
     }
   `)
+
+  if (func) {
+    return (
+      <div className={divClass} onClick={() => func(!compState)}>
+        <Img className={imgClass} fluid={image} alt="image" />
+      </div>
+    )
+  }
+
+  if (image) {
+    return <Img className={imgClass} fluid={image} alt="image" />
+  }
 
   if (!data?.placeholderImage?.childImageSharp?.fluid) {
     return <div>Picture not found</div>
