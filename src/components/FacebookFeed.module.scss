@@ -1,0 +1,30 @@
+@import "../styles/variables";
+
+.facebook {
+  @apply m-auto;
+  background-color: green;
+
+  .title {
+    @apply flex;
+    @apply w-full;
+    @apply flex-col;
+    @apply items-center;
+    @apply mt-12;
+    @apply mb-4;
+
+    h3 {
+      font-size: $font-24;
+      color: $font-dark-grey;
+    }
+
+    div {
+      @apply mt-2;
+      width: 8%;
+      border-bottom: 1px solid $red-light;
+    }
+  }
+
+  iframe {
+    position: cover;
+  }
+}
