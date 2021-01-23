@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+
+.mobileDiv {
+  @apply m-auto;
+  @apply mt-10;
+  height: 85%;
+  border: 2px solid $red-light;
+  width: 90%;
+
+  .top {
+    @apply flex;
+    @apply pt-4;
+    @apply px-4;
+
+    .image {
+      @apply mr-4;
+      width: 38%;
+    }
+
+    .btnDiv {
+      @apply flex;
+      @apply flex-col;
+      @apply justify-evenly;
+    }
+  }
+
+  .center {
+    @apply m-auto;
+    @apply mt-6;
+    width: 85%;
+
+    .featureDiv {
+      @apply mb-4;
+      @apply flex;
+
+      span {
+        width: 40%;
+        color: $red-light;
+      }
+
+      p {
+        font-size: $font-14;
+        width: 60%;
+      }
+    }
+  }
+}

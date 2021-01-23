@@ -4,6 +4,7 @@ import React from "react"
 import Image from "./image"
 import styles from "./CategoryTags.module.scss"
 import { PostInterface } from "../interfaces/Post"
+import Title from "./atoms/Title"
 
 const CategoryTags = () => {
   const {
@@ -55,8 +56,7 @@ const CategoryTags = () => {
     }
   `)
 
-  const image = allFile.edges[0].node.childImageSharp.fluid
-  console.log(image)
+  const image = allFile?.edges[0]?.node?.childImageSharp?.fluid
 
   const categoryDiv = categories.map(el => {
     return (
@@ -70,7 +70,6 @@ const CategoryTags = () => {
   const postContent = post.map((el: PostInterface) => {
     return (
       <div key={el.id} className={styles.postContent}>
-        {console.log(el)}
         <div>
           <h4>{el.fecha}</h4>
           <h4>{el.title}</h4>
@@ -84,6 +83,7 @@ const CategoryTags = () => {
 
   return (
     <div className={styles.content}>
+      <Title>NEWS</Title>
       <div className={styles.categories}>{categoryDiv}</div>
       <div className={styles.post}>{postContent}</div>
       <Image image={image} imgClass={styles.redBtn} />

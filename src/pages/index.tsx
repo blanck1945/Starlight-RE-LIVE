@@ -8,6 +8,7 @@ import VideoBanner from "../components/VideoBanner"
 import CategoryTags from "../components/CategoryTags"
 import BackgroundImage from "gatsby-background-image"
 import FacebookFeed from "../components/FacebookFeed"
+import NavBanner from "../components/moleculas/NavBanner"
 import { graphql } from "gatsby"
 
 import styles from "./index.module.scss"
@@ -31,6 +32,7 @@ export default function IndexPage({
       <VideoBanner />
       <CategoryTags />
       <FacebookFeed />
+      <NavBanner />
     </Layout>
   )
 }

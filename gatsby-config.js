@@ -17,7 +17,7 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: "http://localhost:1337",
-        contentTypes: ["Button", "Category", "Post"],
+        contentTypes: ["Button", "Category", "Post", "Nav", "Feature"],
         queryLimit: 1000,
       },
     },

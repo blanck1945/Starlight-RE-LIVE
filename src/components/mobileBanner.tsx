@@ -9,7 +9,7 @@ const mobileBanner = () => {
       file(relativePath: { eq: "mobile-head.png" }) {
         childImageSharp {
           fluid(maxWidth: 520) {
-            src
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -29,8 +29,6 @@ const mobileBanner = () => {
     },
     allStrapiButton: { nodes },
   } = data
-
-  console.log(nodes)
 
   const btnDis = nodes.map(({ icon, acc, header }) => {
     return <MobileBtn icon={icon} acc={acc} header={header} key={header} />
