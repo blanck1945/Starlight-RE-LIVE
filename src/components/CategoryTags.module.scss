@@ -1,9 +1,61 @@
+@import "../styles/variables";
+
 .content {
   @apply flex;
+  @apply flex-col;
   @apply items-center;
   @apply justify-evenly;
-}
 
-.inner {
-  @apply flex;
+  .categories {
+    @apply flex;
+    @apply w-full;
+    @apply items-center;
+    @apply justify-evenly;
+    @apply mb-4;
+    @apply mt-2;
+
+    .inner {
+      @apply flex;
+      @apply items-center;
+    }
+  }
+  .post {
+    @apply m-auto;
+    @apply mb-2;
+    border: 1px solid $grey;
+    height: 60px;
+    width: 90%;
+
+    .postContent {
+      @apply flex;
+      @apply justify-between;
+      @apply items-start;
+      @apply mt-2;
+      @apply px-2;
+
+      div {
+        h4:first-child {
+          color: $font-light-grey;
+        }
+
+        h4:last-child {
+          @apply mt-1;
+          color: $font-dark-grey;
+        }
+      }
+
+      span {
+        @apply text-white;
+        @apply px-3;
+        @apply py-1;
+      }
+    }
+  }
+
+  .redBtn {
+    @apply m-auto;
+    @apply my-4;
+    width: 90%;
+    height: 50px;
+  }
 }
