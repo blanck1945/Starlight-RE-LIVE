@@ -5,9 +5,11 @@
   @apply items-center;
   @apply justify-evenly;
   @apply m-auto;
-  @apply mt-12;
+  @apply mt-10;
   @apply mb-4;
   width: 40%;
+  @media (min-width: $md-990) {
+  }
 
   .icons {
     @apply text-white;

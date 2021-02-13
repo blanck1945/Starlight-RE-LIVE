@@ -22,14 +22,21 @@
 }
 
 .inner {
+  @apply h-full;
+  @apply flex;
+  @apply flex-col;
   width: 75%;
 
   p {
     font-size: $font-small;
     @apply px-0;
+    @apply mb-0;
+    height: 18px;
   }
 
   span {
+    @apply mb-2;
+    @apply pl-1;
     font-size: $font-20;
   }
 }

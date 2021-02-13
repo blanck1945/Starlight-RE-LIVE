@@ -1,4 +1,31 @@
+@import "../styles/variables";
+
+.wrapper {
+  @apply w-full;
+  @apply my-4;
+  @apply mb-20;
+  height: 200px;
+  @media (min-width: $md-990) {
+    @apply my-0;
+    height: 500px;
+  }
+}
+
+.anchor {
+  @apply w-full;
+  @apply absolute;
+  @apply z-10;
+  @media (min-width: $md-990) {
+    @apply z-30;
+    height: 500px;
+    overflow: hidden;
+  }
+}
+
 .video {
   @apply w-full;
-  @apply h-20;
+  @media (min-width: $md-990) {
+    @apply z-0;
+    object-fit: cover;
+  }
 }

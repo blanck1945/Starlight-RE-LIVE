@@ -1,11 +1,26 @@
+@import "../styles/variables";
+
 .bg {
   @apply w-full;
   @apply absolute;
   @apply pt-2;
   height: 65vh;
+  @media (min-width: $md-990) {
+    @apply pt-0;
+    height: 83vh;
+  }
 }
 
 .hero {
   @apply h-full;
   @apply z-0;
+  @media (min-width: $img-700) {
+    @apply m-auto;
+  }
+  @media (min-width: $img-1350) {
+    width: 80%;
+  }
+  @media (min-width: $img-1650) {
+    width: 66%;
+  }
 }

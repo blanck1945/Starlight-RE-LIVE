@@ -1,17 +1,32 @@
 @import "../styles/variables";
 
 .bgClose {
-    @apply absolute;
-    @apply z-50;
-    @apply w-full;
-    @apply h-full;
-    @apply duration-300;
-    @apply ease-in-out;
-    transform: translateY(-100%);
-    background-color: $red-light;
+  @apply absolute;
+  @apply z-50;
+  @apply w-full;
+  @apply h-full;
+  @apply duration-300;
+  @apply ease-in-out;
+  transform: translateY(-100%);
+  background-color: $red-light;
+  @media (min-width: $md-990) {
+    @apply hidden;
+  }
+
+  .crossDiv {
+    @apply mb-12;
+    @apply mt-6;
+    @apply pr-4;
+    @apply flex;
+    @apply justify-end;
+  }
+
+  .crossImg {
+    width: 55px;
+  }
 }
 
-.bg{
-    @extend .bgClose;
-    transform: translateY(0);
+.bg {
+  @extend .bgClose;
+  transform: translateY(0);
 }

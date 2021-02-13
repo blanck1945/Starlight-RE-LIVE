@@ -1,11 +1,16 @@
 import React, { Children } from "react"
 import styles from "./Title.module.scss"
 
-const Title = ({ children }) => {
+interface TitleProps {
+  children: any
+  noUnderline?: boolean
+}
+
+const Title = ({ children, noUnderline }: TitleProps) => {
   return (
     <div className={styles.titleDiv}>
       <h3>{children}</h3>
-      <div />
+      {!noUnderline && <div />}
     </div>
   )
 }

@@ -1,0 +1,9 @@
+@import "../styles/variables";
+
+.characterBg {
+  @media (min-width: $md-990) {
+    @apply w-full;
+    @apply flex;
+    height: 500px;
+  }
+}

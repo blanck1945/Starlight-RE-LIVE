@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { BiRightArrow } from "react-icons/bi"
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -19,9 +20,24 @@ interface ImageProps {
   divClass?: string
   func?: React.Dispatch<React.SetStateAction<boolean>>
   compState?: any
+  arrow?: ArrowDiv
 }
 
-const Image = ({ image, imgClass, func, compState, divClass }: ImageProps) => {
+interface ArrowDiv {
+  btn: boolean
+  arrowDiv: string
+  iconClass?: string
+  labelClass?: string
+}
+
+const Image = ({
+  image,
+  imgClass,
+  func,
+  compState,
+  divClass,
+  arrow,
+}: ImageProps) => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
@@ -42,15 +58,27 @@ const Image = ({ image, imgClass, func, compState, divClass }: ImageProps) => {
     )
   }
 
+  if (arrow?.btn) {
+    return (
+      <>
+        <Img className={imgClass} fluid={image} alt="image" />
+        <div className={arrow.arrowDiv}>
+          <h4>List</h4>
+          <BiRightArrow />
+        </div>
+      </>
+    )
+  }
+
   if (image) {
     return <Img className={imgClass} fluid={image} alt="image" />
   }
 
-  if (!data?.placeholderImage?.childImageSharp?.fluid) {
+  console.log(image)
+
+  if (!image) {
     return <div>Picture not found</div>
   }
-
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
 }
 
 export default Image

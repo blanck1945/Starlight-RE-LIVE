@@ -3,6 +3,7 @@ import MobileBtn from "../atoms/MobileBtn"
 import Image from "../image"
 import styles from "./MobileDownload.module.scss"
 import { graphql, useStaticQuery } from "gatsby"
+import useWindowWidth from "../hooks/useWindowWidth"
 
 const MobileDonwload = () => {
   const {
@@ -44,6 +45,7 @@ const MobileDonwload = () => {
   `)
 
   const fluid = image[0].childImageSharp.fluid
+  const { windowWidth } = useWindowWidth()
 
   const btnDis = btn.map(({ icon, acc, header }) => {
     return <MobileBtn icon={icon} acc={acc} header={header} key={header} />
@@ -60,12 +62,24 @@ const MobileDonwload = () => {
 
   return (
     <div className={styles.mobileDiv}>
-      <div className={styles.top}>
-        <Image image={fluid} imgClass={styles.image} />
-        <div className={styles.btnDiv}>{btnDis}</div>
-      </div>
-      <div className={styles.center}>{featureDis}</div>
-      <div></div>
+      {windowWidth > 500 ? (
+        <>
+          <div className={styles.top}>
+            <Image image={fluid} imgClass={styles.image} />
+            <div className={styles.center}>{featureDis}</div>
+          </div>
+          <div className={styles.btnDiv}>{btnDis}</div>
+        </>
+      ) : (
+        <>
+          <div className={styles.top}>
+            <Image image={fluid} imgClass={styles.image} />
+            <div className={styles.btnDiv}>{btnDis}</div>
+          </div>
+          <div className={styles.center}>{featureDis}</div>
+          <div></div>
+        </>
+      )}
     </div>
   )
 }

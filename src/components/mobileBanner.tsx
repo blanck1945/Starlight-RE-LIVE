@@ -39,3 +39,5 @@ const mobileBanner = () => {
 
 //<Image image={fluid} imgClass={styles.banner} />
 export default mobileBanner
+
+//<div className={styles.btnDiv}>{btnDis}</div>

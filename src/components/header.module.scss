@@ -1,26 +1,95 @@
 @import "../styles/variables";
 
-.nav{
-    @apply w-full;
-    @apply bg-white;
-    @apply h-12;
-    @apply flex;
+.nav {
+  @apply w-full;
+  @apply bg-white;
+  @apply flex;
+  height: 55px;
+  @media (min-width: $md-990) {
+    @apply fixed;
     @apply justify-between;
+    @apply z-20;
+    transition: $ease-2;
+    height: 83px;
+  }
+
+  .navDiv {
+    @apply w-full;
+    @media (min-width: $md-990) {
+      @apply flex;
+      @apply justify-between;
+      transition: $ease-2;
+    }
+
+    .logo {
+      @apply z-20;
+      @apply m-auto;
+      top: 10px;
+      left: 0;
+      right: 0;
+      height: 80px;
+      width: 145px;
+      @media (min-width: $md-990) {
+        @apply m-0;
+        @apply ml-8;
+        height: 100px;
+        width: 180px;
+      }
+    }
+    .logo:hover {
+      @media (min-width: $md-990) {
+        @apply cursor-pointer;
+        opacity: 0.6;
+        transition: $ease-2;
+      }
+    }
+
+    .bgIcon {
+      @apply absolute;
+      @apply z-30;
+      @apply mt-5;
+      @apply mr-3;
+      left: 83%;
+      bottom: 80px;
+      width: 55px;
+      @media (min-width: $md-990) {
+        @apply hidden;
+      }
+    }
+  }
+
+  .navigation {
+    @apply hidden;
+    @media (min-width: $md-990) {
+      @apply flex;
+      @apply items-center;
+      width: 60%;
+    }
+
+    .navLink {
+      @apply h-full;
+      @apply flex;
+      @apply items-center;
+      @apply justify-center;
+      @apply uppercase;
+      @apply font-bold;
+      @apply cursor-pointer;
+      width: 25%;
+      color: $black;
+      transition: $ease-2;
+      @media (min-width: $md-990) {
+      }
+
+      &:hover {
+        @apply text-white;
+        background-color: $red-nav;
+        transition: $ease-2;
+      }
+    }
+  }
 }
-
-.logo{
-    @apply z-30;
-    top: 10px;
-    left: 30%;
-    height: 80px;
-    width: 145px;
-}
-
-
-
-.bgIcon{
-    @apply z-30;
-    @apply mt-3;
-    @apply mr-2;
-    width: 50px;
+.smallNav {
+  @apply shadow;
+  transition: $ease-2;
+  height: 70px;
 }

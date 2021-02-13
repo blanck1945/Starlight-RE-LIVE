@@ -1,0 +1,39 @@
+@import "../../styles/variables";
+
+.schoolImg {
+  @apply m-auto;
+  @apply mt-8;
+  @apply mb-5;
+  width: 90%;
+  @media (min-width: $md-990) {
+    width: 40%;
+  }
+}
+
+p {
+  @apply m-auto;
+  @apply mb-8;
+  line-height: 25px;
+  font-size: $font-18;
+  width: 90%;
+  @media (min-width: $md-990) {
+    width: 40%;
+  }
+}
+
+.charaDiv {
+  @apply grid;
+  grid-template-columns: 50% 50%;
+  @media (min-width: $md-990) {
+    width: 40%;
+    @apply m-auto;
+  }
+
+  .charaImgSchool {
+    @apply mx-3;
+    @apply mb-4;
+    @media (min-width: $md-990) {
+      width: 85%;
+    }
+  }
+}

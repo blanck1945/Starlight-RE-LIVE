@@ -4,6 +4,10 @@ $black: #333;
 $font-dark-grey: rgb(143, 143, 143);
 $font-light-grey: #474747;
 $grey: rgb(220, 220, 220);
+
+//red
+$red-nav: rgb(249, 80, 85);
+$red-navLink: rgb(249, 60, 60);
 $red-light: #fa3c3c;
 
 //social colors
@@ -14,6 +18,19 @@ $facebook: #4267b2;
 
 $font-14: 14px;
 $font-16: 16px;
+$font-18: 18px;
 $font-20: 20px;
 $font-24: 24px;
 $font-28: 28px;
+
+//Media querys
+
+$sm-450: 450px;
+$img-700: 700px;
+$md-990: 990px;
+$img-1350: 1350px;
+$img-1650: 1650px;
+
+//transition
+
+$ease-2: 0.2s ease-in-out;

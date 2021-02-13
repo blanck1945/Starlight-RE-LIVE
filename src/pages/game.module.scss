@@ -1,0 +1,23 @@
+.content {
+  @apply w-full;
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+  @apply mb-4;
+  min-height: 200px;
+
+  .header {
+    @apply my-5;
+    width: 75%;
+    height: 50px;
+  }
+
+  .image {
+    width: 90%;
+    height: 200px;
+  }
+
+  p {
+    @apply mt-3;
+  }
+}

@@ -16,5 +16,10 @@
     @apply mt-1;
     width: 8%;
     border-bottom: 1px solid $red-light;
+    @media (min-width: $md-990) {
+      @apply mt-2;
+      width: 2%;
+      border-width: 2px;
+    }
   }
 }
