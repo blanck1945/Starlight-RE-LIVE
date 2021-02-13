@@ -3,8 +3,17 @@ import Image from "../image"
 import styles from "./NavBanner.module.scss"
 import { useStaticQuery, graphql } from "gatsby"
 import NavLink from "../atoms/NavLink"
+import useWindowWidth from "../hooks/useWindowWidth"
+import utils from "../../utils/headers"
+import { setCondition } from "../../utils/setCondition"
+import useCondition from "../hooks/useCondition"
 
-const NavBanner = () => {
+interface NavBannerProps {
+  func?: React.Dispatch<React.SetStateAction<boolean>>
+  compState?: boolean
+}
+
+const NavBanner = ({ func, compState }: NavBannerProps) => {
   const {
     allStrapiNav: { nodes },
     allFile: { nodes: image },
@@ -26,7 +35,7 @@ const NavBanner = () => {
         nodes {
           childImageSharp {
             fluid {
-              src
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -34,20 +43,58 @@ const NavBanner = () => {
     }
   `)
 
-  const fluid = image[0].childImageSharp.fluid
+  const fluid = image[0]?.childImageSharp?.fluid
 
-  const linksDis = nodes.map(({ id, name, link }) => {
+  // Hook to change display between mobile and web
+  const { windowWidth } = useWindowWidth()
+
+  // App global configuration variables
+  const {
+    sizes: { mobile },
+    conditionParam: { big },
+    links: { youtube },
+  } = utils
+
+  // Links of burger menu (Mobile)
+  const mobileLinks = nodes.map(({ id, name, link }) => {
     return (
       <div key={id} className={styles.navLink}>
-        <NavLink link={link}>- {name}</NavLink>
+        <NavLink func={func} compState={compState} link={link}>
+          - {name}
+        </NavLink>
       </div>
     )
   })
 
+  // Links of Web Nav (Web)
+  const weblinks = (
+    <div className={styles.webWrapper}>
+      {nodes.map(({ id, name, link }) => {
+        return (
+          <NavLink linkClass={styles.webLinks} func={func} link={link}>
+            {name}
+          </NavLink>
+        )
+      })}
+    </div>
+  )
+
+  // Hook to implement custom condition.
+  const { condition } = useCondition(
+    windowWidth,
+    mobile,
+    weblinks,
+    mobileLinks,
+    big
+  )
+
+  // Component renders burger menu when is open.
   return (
     <div className={styles.banner}>
-      {linksDis}
-      <Image image={fluid} imgClass={styles.youtube} />
+      {condition}
+      <a href={youtube}>
+        <Image image={fluid} imgClass={styles.youtube} />
+      </a>
     </div>
   )
 }

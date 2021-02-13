@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.pageBanner {
+  @apply w-full;
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+  height: 135px;
+  border-bottom: 3px solid $red-light;
+
+  div {
+    @apply pt-10;
+  }
+}

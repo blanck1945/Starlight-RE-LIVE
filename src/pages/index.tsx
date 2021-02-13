@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -8,34 +8,48 @@ import VideoBanner from "../components/VideoBanner"
 import CategoryTags from "../components/CategoryTags"
 import BackgroundImage from "gatsby-background-image"
 import FacebookFeed from "../components/FacebookFeed"
-import NavBanner from "../components/moleculas/NavBanner"
 import { graphql } from "gatsby"
 
 import styles from "./index.module.scss"
+import useWindowWidth from "../components/hooks/useWindowWidth"
+import utils from "../utils/headers"
+import { setCondition } from "../utils/setCondition"
 
-export default function IndexPage({
+const IndexPage = ({
+  location,
   data: {
-    allFile: { edges },
+    allFile: { nodes },
   },
-  ...props
-}) {
-  const bgImg = edges[1]?.node?.childImageSharp?.fluid
-  const hero = edges[0]?.node?.childImageSharp?.fluid
+}) => {
+  const hero = nodes[1]?.childImageSharp?.fluid
+  const bgImgWeb = nodes[1]?.childImageSharp?.fluid
+  const bgImg = nodes[3]?.childImageSharp?.fluid
+
+  const { windowWidth } = useWindowWidth()
+
+  const {
+    sizes: { mobile },
+    conditionParam: { big },
+  } = utils
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Home" />
       <BackgroundImage fluid={bgImg} className={styles.bg}>
-        <Image image={hero} imgClass={styles.hero} />
+        <Image
+          image={setCondition(windowWidth, mobile, bgImgWeb, hero, big)}
+          imgClass={styles.hero}
+        />
       </BackgroundImage>
       <MobileBanner />
       <VideoBanner />
-      <CategoryTags />
+      <CategoryTags display redBtn />
       <FacebookFeed />
-      <NavBanner />
     </Layout>
   )
 }
+
+export default IndexPage
 
 export const query = graphql`
   {
@@ -45,12 +59,10 @@ export const query = graphql`
         relativePath: { regex: "/home/" }
       }
     ) {
-      edges {
-        node {
-          childImageSharp {
-            fluid(maxWidth: 520, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+      nodes {
+        childImageSharp {
+          fluid(maxWidth: 1000, quality: 100) {
+            ...GatsbyImageSharpFluid
           }
         }
       }

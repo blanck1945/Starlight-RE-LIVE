@@ -1,0 +1,20 @@
+@import "../../styles/variables";
+
+.paginator {
+  @apply w-full;
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+  @apply mt-5;
+  height: 80px;
+  border-top: 2px solid $red-light;
+
+  span {
+    @apply bg-black;
+    @apply text-white;
+    @apply py-1;
+    @apply px-2;
+    @apply font-bold;
+    font-size: $font-20;
+  }
+}

@@ -1,10 +1,20 @@
+@import "../styles/variables";
+
 .btnDiv {
-  @apply h-full;
   @apply flex;
-  @apply justify-evenly;
   @apply justify-evenly;
   @apply w-full;
   @apply bg-white;
   @apply pt-4;
+  @apply absolute;
   height: 16%;
+  @media (min-width: $md-990) {
+    @apply absolute;
+    @apply z-30;
+    @apply pt-0;
+    left: 25%;
+    bottom: 10%;
+    height: 60px;
+    width: 50%;
+  }
 }

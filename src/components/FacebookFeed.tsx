@@ -13,7 +13,7 @@ const FacebookFeed = () => {
         height="500"
         width="400"
         style={{ border: "none", overflow: "hidden" }}
-        className="feed"
+        className={styles.feed}
         scrolling="no"
         loading="lazy"
         allow="encrypted-media"
