@@ -8,7 +8,7 @@
   @media (min-width: $md-990) {
     @apply fixed;
     @apply justify-between;
-    @apply z-20;
+    @apply z-40;
     transition: $ease-2;
     height: 83px;
   }
