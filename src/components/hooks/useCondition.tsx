@@ -7,7 +7,7 @@ const useCondition = (
   conditionFalse: any,
   operator?: string
 ) => {
-  // condition value
+  // conditional value
   const [condition, setCondition] = useState<any>(undefined)
 
   useEffect(() => {
@@ -15,12 +15,14 @@ const useCondition = (
     switch (operator) {
       case "big":
         setCondition(value > equal ? conditionTrue : conditionFalse)
+        break
       case "small":
         setCondition(value < equal ? conditionTrue : conditionFalse)
+        break
       default:
         setCondition(value === equal ? conditionTrue : conditionFalse)
     }
-  }, [])
+  }, [value])
 
   return {
     condition,

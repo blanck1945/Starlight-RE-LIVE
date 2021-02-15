@@ -23,7 +23,7 @@ $font-20: 20px;
 $font-24: 24px;
 $font-28: 28px;
 
-//Media querys
+// Media querys.
 
 $sm-450: 450px;
 $img-700: 700px;
@@ -31,6 +31,10 @@ $md-990: 990px;
 $img-1350: 1350px;
 $img-1650: 1650px;
 
-//transition
+// Borders.
+
+$link-border: 0.25px solid rgba(190, 190, 190, 0.555);
+
+// Transition.
 
 $ease-2: 0.2s ease-in-out;

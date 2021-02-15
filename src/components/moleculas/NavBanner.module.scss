@@ -35,7 +35,11 @@
     @apply justify-center;
 
     span:first-child {
-      border-left: 0.25px solid rgba(190, 190, 190, 0.555);
+      border-left: $link-border;
+    }
+
+    a:first-child {
+      border-left: $link-border;
     }
 
     .webLinks {
@@ -49,7 +53,7 @@
       @apply font-bold;
       @apply mt-3;
       font-size: $font-20;
-      border-right: 0.25px solid rgba(190, 190, 190, 0.555);
+      border-right: $link-border;
       transform: skew(-14deg);
       height: 70px;
       min-width: 9%;
