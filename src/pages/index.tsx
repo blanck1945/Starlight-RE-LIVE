@@ -14,6 +14,7 @@ import styles from "./index.module.scss"
 import useWindowWidth from "../components/hooks/useWindowWidth"
 import utils from "../utils/headers"
 import { setCondition } from "../utils/setCondition"
+import useCondition from "../components/hooks/useCondition"
 
 const IndexPage = ({
   location,
@@ -21,9 +22,16 @@ const IndexPage = ({
     allFile: { nodes },
   },
 }) => {
-  const hero = nodes[1]?.childImageSharp?.fluid
-  const bgImgWeb = nodes[1]?.childImageSharp?.fluid
-  const bgImg = nodes[3]?.childImageSharp?.fluid
+  // Logo Img
+  const logoImg = nodes[0]?.childImageSharp?.fluid
+
+  // BackgroundImg mobile && Web
+  const mobileBgImage = nodes[3]?.childImageSharp?.fluid
+  const webBgImage = nodes[4]?.childImageSharp?.fluid
+
+  // HeaderImg mobile && Web
+  const mobileHeaderImg = nodes[1]?.childImageSharp?.fluid
+  const webHeaderImg = nodes[2]?.childImageSharp?.fluid
 
   const { windowWidth } = useWindowWidth()
 
@@ -32,14 +40,28 @@ const IndexPage = ({
     conditionParam: { big },
   } = utils
 
+  const bgImg = setCondition(
+    windowWidth,
+    mobile,
+    webBgImage,
+    mobileBgImage,
+    big
+  )
+
+  const headerImg = setCondition(
+    windowWidth,
+    mobile,
+    webHeaderImg,
+    mobileHeaderImg,
+    big
+  )
+
   return (
     <Layout location={location}>
       <SEO title="Home" />
       <BackgroundImage fluid={bgImg} className={styles.bg}>
-        <Image
-          image={setCondition(windowWidth, mobile, bgImgWeb, hero, big)}
-          imgClass={styles.hero}
-        />
+        <Image image={headerImg} imgClass={styles.hero} />
+        <Image image={logoImg} imgClass={styles.logo} />
       </BackgroundImage>
       <MobileBanner />
       <VideoBanner />
@@ -50,6 +72,8 @@ const IndexPage = ({
 }
 
 export default IndexPage
+
+// image={setCondition(windowWidth, mobile, bgImgWeb, hero, big)}
 
 export const query = graphql`
   {
