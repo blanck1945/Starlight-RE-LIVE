@@ -2,23 +2,28 @@ import { graphql } from "gatsby"
 import React from "react"
 import PageBanner from "../components/atoms/PageBanner"
 import Layout from "../components/layout"
+import siteGlobalVariables from "../utils/headers"
 import SchoolSection from "../components/moleculas/SchoolDiv"
 import { SchoolInterface } from "../interfaces/School"
-import headers from "../utils/headers"
 
-const characters = ({
-  location,
-  data: {
+const characters = ({ location, data }) => {
+  // Site Global Variables
+  const {
+    pageHeaders: { CHARACTERS },
+  } = siteGlobalVariables
+
+  // Destructuring Querys
+  const {
     allStrapiSchool: { nodes: schools },
-  },
-}) => {
+  } = data
+
   const schoolDis = schools.map((school: SchoolInterface) => {
     return <SchoolSection key={school.id} school={school} />
   })
 
   return (
     <Layout location={location}>
-      <PageBanner header={headers.CHARACTERS} />
+      <PageBanner header={CHARACTERS} />
       {schoolDis}
     </Layout>
   )

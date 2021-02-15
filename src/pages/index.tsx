@@ -13,33 +13,35 @@ import { graphql } from "gatsby"
 import styles from "./index.module.scss"
 import useWindowWidth from "../components/hooks/useWindowWidth"
 import utils from "../utils/headers"
-import { setCondition } from "../utils/setCondition"
+import useCondition from "../components/hooks/useCondition"
 
-const IndexPage = ({
-  location,
-  data: {
-    allFile: { nodes },
-  },
-}) => {
-  const hero = nodes[1]?.childImageSharp?.fluid
-  const bgImgWeb = nodes[1]?.childImageSharp?.fluid
-  const bgImg = nodes[3]?.childImageSharp?.fluid
-
-  const { windowWidth } = useWindowWidth()
-
+const IndexPage = ({ location, data }) => {
+  // Site Global Variabless
   const {
     sizes: { mobile },
     conditionParam: { big },
   } = utils
 
+  // Destructuring Querys
+  const {
+    allFile: { nodes },
+  } = data
+
+  const hero = nodes[1]?.childImageSharp?.fluid
+  const bgImgWeb = nodes[1]?.childImageSharp?.fluid
+  const bgImg = nodes[3]?.childImageSharp?.fluid
+
+  // Hook to handle mobile or web view
+  const { windowWidth } = useWindowWidth()
+
+  // Hook to handle conditional rendering
+  const { condition } = useCondition(windowWidth, mobile, bgImgWeb, hero, big)
+
   return (
     <Layout location={location}>
       <SEO title="Home" />
       <BackgroundImage fluid={bgImg} className={styles.bg}>
-        <Image
-          image={setCondition(windowWidth, mobile, bgImgWeb, hero, big)}
-          imgClass={styles.hero}
-        />
+        <Image image={condition} imgClass={styles.hero} />
       </BackgroundImage>
       <MobileBanner />
       <VideoBanner />
