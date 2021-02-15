@@ -4,8 +4,7 @@ import styles from "./NavBanner.module.scss"
 import { useStaticQuery, graphql } from "gatsby"
 import NavLink from "../atoms/NavLink"
 import useWindowWidth from "../hooks/useWindowWidth"
-import utils from "../../utils/headers"
-import { setCondition } from "../../utils/setCondition"
+import siteGlobalVariables from "../../utils/headers"
 import useCondition from "../hooks/useCondition"
 
 interface NavBannerProps {
@@ -48,15 +47,15 @@ const NavBanner = ({ func, compState }: NavBannerProps) => {
   // Hook to change display between mobile and web
   const { windowWidth } = useWindowWidth()
 
-  // App global configuration variables
+  // Site Global Variables
   const {
     sizes: { mobile },
     conditionParam: { big },
     links: { youtube },
-  } = utils
+  } = siteGlobalVariables
 
-  // Links of burger menu (Mobile)
-  const mobileLinks = nodes.map(({ id, name, link }) => {
+  // Links of Burger menu (Mobile)
+  const mobileLinks: JSX.Element = nodes.map(({ id, name, link }) => {
     return (
       <div key={id} className={styles.navLink}>
         <NavLink func={func} compState={compState} link={link}>
@@ -66,8 +65,8 @@ const NavBanner = ({ func, compState }: NavBannerProps) => {
     )
   })
 
-  // Links of Web Nav (Web)
-  const weblinks = (
+  // Links of Youtube-Banner (Web)
+  const webLinks = (
     <div className={styles.webWrapper}>
       {nodes.map(({ id, name, link }) => {
         return (
@@ -83,7 +82,7 @@ const NavBanner = ({ func, compState }: NavBannerProps) => {
   const { condition } = useCondition(
     windowWidth,
     mobile,
-    weblinks,
+    webLinks,
     mobileLinks,
     big
   )
