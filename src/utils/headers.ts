@@ -15,6 +15,13 @@ export default  {
         small: 'small'
     },
     links: {
-        youtube: 'https://www.youtube.com/channel/UCpcs9GP_NIBxzDfNTWolNPw'
+        youtube: 'https://www.youtube.com/channel/UCpcs9GP_NIBxzDfNTWolNPw',
+        googleStore: "",
+        androidStore: ""
+    },
+    live: {
+        live: "Live",
+        liveEvent: "Live/Event",
+        live_Event: "Live / Event"
     }
 }

@@ -6,8 +6,9 @@ import Image from "./image"
 import styles from "./CategoryTags.module.scss"
 import { PostInterface } from "../interfaces/Post"
 import useCondition from "./hooks/useCondition"
-import { setCondition } from "../utils/setCondition"
 import useWindowWidth from "./hooks/useWindowWidth"
+import siteConfiguration from "../utils/headers"
+import useBoolean from "./hooks/useBoolean"
 
 interface CategoryTagsProps {
   display?: boolean
@@ -65,29 +66,52 @@ const CategoryTags = ({ display, redBtn }: CategoryTagsProps) => {
   `)
 
   const image = allFile?.edges[0]?.node?.childImageSharp?.fluid
+
+  // Site Global Variables.
+  const {
+    pageHeaders: { NEWS },
+    sizes: { mobile },
+    conditionParam: { big },
+    live: { live, liveEvent, live_Event },
+  } = siteConfiguration
+
+  // Hook to handle mobile or web view.
   const { windowWidth } = useWindowWidth()
 
   const categoryDiv = categories.map(el => {
+    // Hook to manage conditional rendering.
+    const { condition } = useCondition(el.name, liveEvent, live_Event, el.name)
+
+    // Component to render Category tags.
     return (
       <div key={el.id} className={styles.inner}>
         <RiStarSFill style={{ color: el.color, marginBottom: "2.5px" }} />
-        <h5>{setCondition(el.name, "Live/Event", "Live / Event", el.name)}</h5>
+        <h5>{condition}</h5>
       </div>
     )
   })
 
   const postContent = post.map((el: PostInterface) => {
+    // Hook to manage conditional rendeting.
+    const { condition } = useCondition(
+      windowWidth,
+      mobile,
+      <p>aca va la image</p>,
+      null,
+      big
+    )
+
     return (
       <div key={el.id} className={styles.postContent}>
         <div>
           <h4>{el.fecha}</h4>
           <span style={{ backgroundColor: el.color }}>
-            {el.tag === "Live" ? "Live/Event" : el.tag}
+            {el.tag === live ? liveEvent : el.tag}
           </span>
         </div>
         <div>
           <h4>{el.title}</h4>
-          {setCondition(windowWidth, 500, <p>aca va la image</p>, null, "big")}
+          {condition}
         </div>
       </div>
     )
@@ -101,7 +125,7 @@ const CategoryTags = ({ display, redBtn }: CategoryTagsProps) => {
 
   return (
     <div className={styles.content}>
-      {display && <Title>NEWS</Title>}
+      {display && <Title>{NEWS}</Title>}
       <div className={styles.categories}>{categoryDiv}</div>
       <div className={styles.post}>{postContent}</div>
       {redBtn && <Image arrow={arrow} image={image} imgClass={styles.redBtn} />}
