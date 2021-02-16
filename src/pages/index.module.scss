@@ -6,8 +6,7 @@
   @apply pt-2;
   height: 65vh;
   @media (min-width: $md-990) {
-    @apply pt-0;
-    height: 83vh;
+    height: 84vh;
   }
 }
 
@@ -22,5 +21,16 @@
   }
   @media (min-width: $img-1650) {
     width: 66%;
+    @apply mt-8;
+  }
+}
+
+.logo {
+  @media (min-width: $md-990) {
+    @apply absolute;
+    @apply z-30;
+    @apply m-auto;
+    width: 27%;
+    bottom: 365px;
   }
 }
