@@ -1,9 +1,30 @@
 @import "../styles/variables";
+@import "../styles/mixin";
 
 .characterBg {
   @media (min-width: $md-990) {
+    @include setHeight(105vh);
     @apply w-full;
     @apply flex;
-    height: 500px;
+
+    .charaDiv {
+      @include setWidth(85%);
+      @apply h-full;
+      @apply m-auto;
+
+      div {
+        @apply flex;
+        @apply flex-col;
+        @apply h-full;
+        @apply mb-8;
+        @apply ml-8;
+        span {
+          @include setHeight(385px);
+          @apply block;
+          color: $bg-chara-name;
+          font-size: $font-500;
+        }
+      }
+    }
   }
 }

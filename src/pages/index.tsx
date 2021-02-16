@@ -12,16 +12,21 @@ import { graphql } from "gatsby"
 
 import styles from "./index.module.scss"
 import useWindowWidth from "../components/hooks/useWindowWidth"
-import utils from "../utils/headers"
+import siteGlobalVariables from "../utils/headers"
 import { setCondition } from "../utils/setCondition"
-import useCondition from "../components/hooks/useCondition"
 
-const IndexPage = ({
-  location,
-  data: {
+const IndexPage = ({ location, data }) => {
+  // Site Global Variabless
+  const {
+    sizes: { mobile },
+    conditionParam: { big },
+  } = siteGlobalVariables
+
+  // Destructuring Querys
+  const {
     allFile: { nodes },
-  },
-}) => {
+  } = data
+
   // Logo Img
   const logoImg = nodes[0]?.childImageSharp?.fluid
 
@@ -33,12 +38,8 @@ const IndexPage = ({
   const mobileHeaderImg = nodes[1]?.childImageSharp?.fluid
   const webHeaderImg = nodes[2]?.childImageSharp?.fluid
 
+  // Hook to handle mobile or web view
   const { windowWidth } = useWindowWidth()
-
-  const {
-    sizes: { mobile },
-    conditionParam: { big },
-  } = utils
 
   const bgImg = setCondition(
     windowWidth,
@@ -72,8 +73,6 @@ const IndexPage = ({
 }
 
 export default IndexPage
-
-// image={setCondition(windowWidth, mobile, bgImgWeb, hero, big)}
 
 export const query = graphql`
   {
