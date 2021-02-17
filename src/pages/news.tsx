@@ -3,12 +3,13 @@ import Layout from "../components/layout"
 import PageBanner from "../components/atoms/PageBanner"
 import CategoryTags from "../components/CategoryTags"
 import Paginator from "../components/atoms/Paginator"
-import siteConfiguration from "../utils/headers"
+import siteGlobalVariables from "../utils/headers"
 
 const News = ({ location }) => {
+  // Site Global Variables
   const {
     pageHeaders: { NEWS },
-  } = siteConfiguration
+  } = siteGlobalVariables
 
   return (
     <Layout location={location}>

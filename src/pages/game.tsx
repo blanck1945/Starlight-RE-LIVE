@@ -1,19 +1,21 @@
 import React from "react"
 import Layout from "../components/layout"
 import PageBanner from "../components/atoms/PageBanner"
-import siteConfiguration from "../utils/headers"
+import siteGlobalVariables from "../utils/headers"
 import Image from "../components/image"
 import styles from "./game.module.scss"
 import { graphql } from "gatsby"
 
 const game = ({ location, data }) => {
+  // Site Global Variables
+  const {
+    pageHeaders: { GAME },
+  } = siteGlobalVariables
+
+  // Nodes from Query
   const {
     allStrapiPara: { nodes },
   } = data
-
-  const {
-    pageHeaders: { GAME },
-  } = siteConfiguration
 
   const gamePage = nodes.map(({ para }) => {
     return para.map(para => {
