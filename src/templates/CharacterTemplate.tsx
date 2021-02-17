@@ -1,14 +1,13 @@
 import React from "react"
 import Layout from "../components/layout"
+import useSplitWord from "../hooks/useSplitWord"
 import styles from "./CharacterTemplate.module.scss"
 
 const CharacterTemplate = ({ pageContext, location }) => {
   const { character } = pageContext
 
-  const splitWord = (word: string) => {
-    const newArr = word.split(" ")
-    return newArr
-  }
+  // Hook to split words
+  const { splitWord } = useSplitWord(character.chara_name)
 
   return (
     <Layout location={location}>
@@ -18,10 +17,8 @@ const CharacterTemplate = ({ pageContext, location }) => {
       >
         <div className={styles.charaDiv}>
           <div>
-            <span className={styles.nameBg}>
-              {splitWord(character.chara_name)[0]}
-            </span>
-            <span>{splitWord(character.chara_name)[1]}</span>
+            <span className={styles.nameBg}>{splitWord && splitWord[0]}</span>
+            <span>{splitWord && splitWord[1]}</span>
           </div>
           <div className={styles.characterInfo}></div>
           <div className={styles.characterImg}></div>
