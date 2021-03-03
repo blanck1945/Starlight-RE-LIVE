@@ -1,0 +1,34 @@
+.downFooter {
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+  @apply justify-start;
+  @apply w-full;
+  height: 175px;
+
+  & > :first-child {
+    @apply font-light;
+    @apply mt-6;
+    @apply cursor-pointer;
+    font-size: 16px;
+
+    & > :first-child {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  & > :nth-child(2) {
+    @apply mt-10;
+    @apply font-light;
+    font-size: 13px;
+  }
+
+  .arrow {
+    @apply absolute;
+    @apply cursor-pointer;
+    left: 85%;
+    min-height: 50px;
+    width: 35px;
+  }
+}
