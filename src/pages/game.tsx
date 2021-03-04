@@ -1,19 +1,31 @@
 import React from "react"
 import Layout from "../components/layout"
 import PageBanner from "../components/atoms/PageBanner"
-import siteConfiguration from "../utils/headers"
 import Image from "../components/image"
 import styles from "./game.module.scss"
 import { graphql } from "gatsby"
+import SiteGlobalVariables from "../configuration/SiteGlobalVariables"
+import Container from "../components/atoms/Container"
 
 const game = ({ location, data }) => {
   const {
     allStrapiPara: { nodes },
   } = data
 
+  // Site Global Variables.
   const {
     pageHeaders: { GAME },
-  } = siteConfiguration
+    gameButton,
+  } = SiteGlobalVariables
+
+  // Red Buttons from page navigation.
+  const gameBtn = gameButton.map(btn => {
+    return (
+      <span className={styles.gameBtn} key={btn}>
+        {btn}
+      </span>
+    )
+  })
 
   const gamePage = nodes.map(({ para }) => {
     return para.map(para => {
@@ -33,10 +45,28 @@ const game = ({ location, data }) => {
     })
   })
 
+  // Container Class
+  const wrapperClass = {
+    width: "55%",
+    margin: "auto",
+    marginTop: "3.5rem",
+  }
+
+  // Container Class
+  const containerClass = {
+    marginBottom: "1.5rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  }
+
   return (
     <Layout location={location}>
       <PageBanner header={GAME} />
-      {gamePage}
+      <Container {...wrapperClass}>
+        <Container {...containerClass}>{gameBtn}</Container>
+        <Container>{gamePage}</Container>
+      </Container>
     </Layout>
   )
 }
