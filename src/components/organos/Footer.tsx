@@ -1,5 +1,6 @@
 import React from "react"
 import SocialIcons from "../atoms/SocialIcons"
+import DownFotter from "../moleculas/DownFotter"
 import MobileDownload from "../moleculas/MobileDonwload"
 import NavBanner from "../moleculas/NavBanner"
 import styles from "./Footer.module.scss"
@@ -10,6 +11,7 @@ const Footer = () => {
       <NavBanner />
       <MobileDownload />
       <SocialIcons />
+      <DownFotter />
     </div>
   )
 }
