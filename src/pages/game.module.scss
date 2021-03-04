@@ -1,3 +1,5 @@
+@import "../styles/variables";
+
 .content {
   @apply w-full;
   @apply flex;
@@ -16,8 +18,20 @@
     width: 90%;
     height: 200px;
   }
-
   p {
     @apply mt-3;
   }
+}
+
+.gameBtn {
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+  @apply rounded;
+  @apply cursor-pointer;
+  @apply text-white;
+  @apply font-bold;
+  background-color: $red-light;
+  width: 15%;
+  height: 38px;
 }
