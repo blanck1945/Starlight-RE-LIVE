@@ -1,0 +1,22 @@
+@import "../styles/variables";
+
+.container {
+  @apply flex;
+  @apply items-center;
+  @apply flex-col;
+  @apply justify-center;
+  @apply mt-32;
+  @apply w-full;
+
+  & > :first-child {
+    color: $red-light;
+    font-size: $font-45;
+  }
+
+  & > :last-child {
+    @apply mt-4;
+    @apply text-black;
+    font-size: $font-20;
+    text-decoration: none;
+  }
+}

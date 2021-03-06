@@ -3,8 +3,9 @@ import React from "react"
 import PageBanner from "../components/atoms/PageBanner"
 import Layout from "../components/layout"
 import SchoolSection from "../components/moleculas/SchoolDiv"
+import SEO from "../components/seo"
+import SiteGlobalVariables from "../configuration/SiteGlobalVariables"
 import { SchoolInterface } from "../interfaces/School"
-import headers from "../utils/headers"
 
 const characters = ({
   location,
@@ -12,13 +13,20 @@ const characters = ({
     allStrapiSchool: { nodes: schools },
   },
 }) => {
+  // Site Global Variables.
+  const {
+    pageHeaders: { CHARACTERS },
+    titles: { characters },
+  } = SiteGlobalVariables
+
   const schoolDis = schools.map((school: SchoolInterface) => {
     return <SchoolSection key={school.id} school={school} />
   })
 
   return (
     <Layout location={location}>
-      <PageBanner header={headers.CHARACTERS} />
+      <SEO title={characters} />
+      <PageBanner header={CHARACTERS} />
       {schoolDis}
     </Layout>
   )

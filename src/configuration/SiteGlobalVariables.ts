@@ -35,7 +35,15 @@ const SiteGlobalVariables:SiteGlobalVariableInterface = {
         "Vs.Revue",
         "My Theater",
         "Tips"
-    ]
+    ],
+    titles: {
+        home: "Home",
+        notFound: "404",
+        news: "News",
+        game: "Game",
+        characters: "Characters",
+        inquiries: "Inquiries"
+    }
 }
 
 export default SiteGlobalVariables;

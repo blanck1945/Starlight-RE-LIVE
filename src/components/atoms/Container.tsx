@@ -2,8 +2,10 @@ import React from "react"
 
 interface ContainerProps {
   children: JSX.Element | JSX.Element[]
+  divClass?: string
   width?: string
   flex?: boolean
+  flexDirection?: any
   justifyContent?: string
   display?: string
   alignItems?: string
@@ -15,17 +17,20 @@ interface ContainerProps {
 
 const Container = ({
   children,
+  divClass,
   width,
   display,
   justifyContent,
   alignItems,
   margin,
+  flexDirection,
   marginTop,
   marginBottom,
   bg,
 }: ContainerProps) => {
   return (
     <div
+      className={divClass}
       style={{
         backgroundColor: bg,
         width: width,
@@ -33,6 +38,7 @@ const Container = ({
         marginTop: marginTop,
         marginBottom: marginBottom,
         display: display,
+        flexDirection: flexDirection,
         alignItems: alignItems,
         justifyContent: justifyContent,
       }}
