@@ -9,11 +9,6 @@ import Container from "../components/atoms/Container"
 import SEO from "../components/seo"
 
 const game = ({ location, data }) => {
-  // Strapi data.
-  const {
-    allStrapiPara: { nodes },
-  } = data
-
   // Site Global Variables.
   const { gameButton } = SiteGlobalVariables
 
@@ -31,6 +26,10 @@ const game = ({ location, data }) => {
       </span>
     )
   })
+  // Strapi data.
+  const {
+    allStrapiPara: { nodes },
+  } = data
 
   const gamePage = nodes.map(({ para }) => {
     return para.map(para => {

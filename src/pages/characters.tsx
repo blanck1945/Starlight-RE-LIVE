@@ -7,12 +7,12 @@ import SEO from "../components/seo"
 import SiteGlobalVariables from "../configuration/SiteGlobalVariables"
 import { SchoolInterface } from "../interfaces/School"
 
-const characters = ({
-  location,
-  data: {
+const characters = ({ location, data }) => {
+  // Nodes from Query
+  const {
     allStrapiSchool: { nodes: schools },
-  },
-}) => {
+  }
+
   // Site Global Variables.
   const {
     pageHeaders: { CHARACTERS },
