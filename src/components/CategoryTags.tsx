@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 import { RiStarSFill } from "react-icons/ri"
-import React from "react"
+import React, { useState } from "react"
 import Title from "./atoms/Title"
 import Image from "./image"
 import styles from "./CategoryTags.module.scss"
@@ -8,7 +8,7 @@ import { PostInterface } from "../interfaces/Post"
 import useCondition from "./hooks/useCondition"
 import useWindowWidth from "./hooks/useWindowWidth"
 import siteConfiguration from "../utils/headers"
-import useBoolean from "./hooks/useBoolean"
+import SiteGlobalVariables from "../configuration/SiteGlobalVariables"
 
 interface CategoryTagsProps {
   display?: boolean
@@ -17,18 +17,10 @@ interface CategoryTagsProps {
 
 const CategoryTags = ({ display, redBtn }: CategoryTagsProps) => {
   const {
-    allStrapiCategory: { nodes: categories },
     allStrapiPost: { nodes: post },
     allFile,
   } = useStaticQuery(graphql`
     {
-      allStrapiCategory {
-        nodes {
-          id
-          color
-          name
-        }
-      }
       allStrapiPost {
         nodes {
           id
@@ -69,24 +61,38 @@ const CategoryTags = ({ display, redBtn }: CategoryTagsProps) => {
 
   // Site Global Variables.
   const {
-    pageHeaders: { NEWS },
     sizes: { mobile },
     conditionParam: { big },
     live: { live, liveEvent, live_Event },
   } = siteConfiguration
 
+  // Site Global Variables.
+  const {
+    categories,
+    pageHeaders: { NEWS },
+  } = SiteGlobalVariables
+
+  // Hook to handle categories state.
+  const [selectedCategory, setSelectedCategory] = useState<string>("All")
+
   // Hook to handle mobile or web view.
   const { windowWidth } = useWindowWidth()
 
-  const categoryDiv = categories.map(el => {
+  const categoryDiv = categories.map(({ tag, color }) => {
     // Hook to manage conditional rendering.
-    const { condition } = useCondition(el.name, liveEvent, live_Event, el.name)
+    const { condition } = useCondition(tag, liveEvent, live_Event, tag)
 
     // Component to render Category tags.
     return (
-      <div key={el.id} className={styles.inner}>
-        <RiStarSFill style={{ color: el.color, marginBottom: "2.5px" }} />
-        <h5>{condition}</h5>
+      <div
+        key={tag}
+        className={styles.inner}
+        onClick={() => setSelectedCategory(tag)}
+      >
+        <RiStarSFill style={{ color: color, marginBottom: "2.5px" }} />
+        <h5 className={selectedCategory == tag ? styles.selected : ""}>
+          {condition}
+        </h5>
       </div>
     )
   })

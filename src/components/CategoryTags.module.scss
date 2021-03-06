@@ -20,13 +20,22 @@
     @media (min-width: $md-990) {
       @apply mt-8;
       @apply mb-12;
-      width: 35%;
+      width: 30%;
     }
 
     .inner {
       @apply flex;
       @apply items-center;
+      @apply cursor-pointer;
       font-size: $font-20;
+
+      .selected {
+        border-bottom: 1px solid;
+      }
+
+      & > :first-child {
+        @apply mr-2;
+      }
     }
   }
   .post {
