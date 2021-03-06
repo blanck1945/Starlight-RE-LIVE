@@ -6,16 +6,21 @@ import styles from "./game.module.scss"
 import { graphql } from "gatsby"
 import SiteGlobalVariables from "../configuration/SiteGlobalVariables"
 import Container from "../components/atoms/Container"
+import SEO from "../components/seo"
 
 const game = ({ location, data }) => {
+  // Strapi data.
   const {
     allStrapiPara: { nodes },
   } = data
 
   // Site Global Variables.
+  const { gameButton } = SiteGlobalVariables
+
+  // Site Global Variables.
   const {
+    titles: { game },
     pageHeaders: { GAME },
-    gameButton,
   } = SiteGlobalVariables
 
   // Red Buttons from page navigation.
@@ -62,6 +67,7 @@ const game = ({ location, data }) => {
 
   return (
     <Layout location={location}>
+      <SEO title={game} />
       <PageBanner header={GAME} />
       <Container {...wrapperClass}>
         <Container {...containerClass}>{gameBtn}</Container>

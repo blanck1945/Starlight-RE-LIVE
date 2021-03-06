@@ -9,7 +9,7 @@
     @apply fixed;
     @apply justify-between;
     top: 0;
-   @apply z-40;
+    @apply z-40;
     transition: $ease-2;
     height: 83px;
   }
@@ -75,8 +75,8 @@
       @apply uppercase;
       @apply font-bold;
       @apply cursor-pointer;
+      @apply text-black;
       width: 25%;
-      color: $black;
       transform: $skew;
       font-size: $font-20;
       transition: $ease-2;
@@ -93,7 +93,7 @@
   }
 }
 .smallNav {
-  @apply shadow;
+  @apply shadow-md;
   transition: $ease-2;
   height: 70px;
 }
