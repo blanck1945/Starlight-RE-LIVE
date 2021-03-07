@@ -7,8 +7,8 @@ import classNames from "classnames"
 const SocialIcons = () => {
   return (
     <div className={styles.socialDiv}>
-      <AiOutlineTwitter className={classNames(styles.icons, styles.tw)} />
-      <FaFacebookF className={classNames(styles.icons, styles.fb)} />
+      <AiOutlineTwitter style={{ backgroundColor: "#1da1f2" }} />
+      <FaFacebookF style={{ backgroundColor: "#4267b2" }} />
     </div>
   )
 }

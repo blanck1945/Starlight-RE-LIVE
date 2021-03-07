@@ -10,99 +10,106 @@
     @apply mt-16;
     width: 48%;
     height: 350px;
-  }
 
-  .top {
-    @apply flex;
-    @apply pt-4;
-    @apply px-4;
-    @media (min-width: $md-990) {
-      @apply pt-10;
-      @apply m-auto;
-      width: 90%;
-      @apply justify-center;
-    }
-
-    .image {
-      @apply mr-4;
-      width: 38%;
-      @media (min-width: $md-990) {
-        @apply mr-0;
-        @apply ml-2;
-        width: 14%;
-        height: 105px;
-      }
-    }
-
-    .btnDiv {
+    & > :first-child {
       @apply flex;
-      @apply flex-col;
-      @apply justify-evenly;
+      @apply pt-4;
+      @apply px-4;
+
       @media (min-width: $md-990) {
-        @apply flex-row;
-        background-color: blue;
-        @apply w-full;
-      }
-    }
-  }
+        @apply pt-10;
+        @apply m-auto;
+        width: 90%;
+        @apply justify-center;
 
-  .btnDiv {
-    @media (min-width: $md-990) {
-      @apply flex;
-      @apply flex-row;
-      @apply justify-center;
-      @apply items-center;
-      @apply w-full;
-      @apply mt-4;
+        & > :first-child {
+          @apply mr-4;
+          width: 38%;
+          @media (min-width: $md-990) {
+            @apply mr-0;
+            @apply ml-2;
+            width: 14%;
+            height: 105px;
+          }
+        }
 
-      div {
-        @apply mr-12;
-      }
-    }
-  }
+        & > :last-child {
+          @media (min-width: $md-990) {
+            @apply px-8;
+            width: 86%;
+          }
 
-  .center {
-    @apply m-auto;
-    @apply mt-6;
-    width: 85%;
-    @media (min-width: $md-990) {
-      @apply mt-0;
-      @apply ml-8;
-      @apply grid;
-      grid-template-columns: 50% 50%;
-      width: 80%;
-    }
+          & > :first-child {
+            @apply m-auto;
+            @apply mt-6;
+            width: 85%;
+            @media (min-width: $md-990) {
+              @apply mt-0;
+              @apply grid;
+              @apply items-start;
+              @apply w-full;
+              grid-template-columns: 50% 55%;
 
-    div:first-child {
-      @apply mb-0;
-    }
+              // Feature div.
+              & > :is(div) {
+                @apply mb-5;
+                @apply flex;
+                height: 30px;
+                @media (min-width: $md-990) {
+                  @apply flex;
+                  @apply flex-col;
+                  @apply items-start;
+                  @apply justify-center;
+                  height: auto;
 
-    .featureDiv {
-      @apply mb-5;
-      @apply flex;
-      height: 30px;
-      @media (min-width: $md-990) {
-        @apply flex-col;
-        @apply items-start;
-        @apply justify-start;
-        @apply mr-10;
-        @apply pl-4;
-        height: 60px;
-        width: 80%;
-      }
+                  // Feature header.
+                  & > :first-child {
+                    @apply mt-1;
+                    @apply font-light;
+                    font-size: $font-14;
+                    width: 40%;
+                    color: $red-light;
+                  }
 
-      span {
-        @apply mt-1;
-        width: 40%;
-        color: $red-light;
-      }
+                  // Feature sub header.
+                  & > :last-child {
+                    font-size: $font-14;
+                    width: 60%;
+                    @apply font-light;
 
-      p {
-        font-size: $font-14;
-        width: 60%;
-        @media (min-width: $md-990) {
-          @apply w-full;
-          font-size: $font-16;
+                    @media (min-width: $md-990) {
+                      @apply w-full;
+                      font-size: $font-16;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          // Buttons container.
+          & > :last-child {
+            @media (min-width: $md-990) {
+              @apply flex;
+              @apply flex-row;
+              @apply justify-start;
+              @apply items-center;
+              @apply w-full;
+              @apply mt-2;
+
+              // Buttons single div.
+              & > :is(div) {
+                @apply mx-0;
+                @apply items-center;
+                @apply flex;
+              }
+
+              // Buttons last div.
+              & > :nth-child(2) {
+                @apply ml-8;
+              }
+            }
+          }
         }
       }
     }

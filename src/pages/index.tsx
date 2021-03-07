@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import MobileBanner from "../components/mobileBanner"
+import MobileBanner from "../components/atoms/mobileBanner"
 import VideoBanner from "../components/VideoBanner"
 import CategoryTags from "../components/CategoryTags"
 import BackgroundImage from "gatsby-background-image"
@@ -15,6 +15,7 @@ import useWindowWidth from "../components/hooks/useWindowWidth"
 import siteGlobalVariables from "../utils/headers"
 import { setCondition } from "../utils/setCondition"
 import SiteGlobalVariables from "../configuration/SiteGlobalVariables"
+import orderImg from "../utils/orderImgs"
 
 const IndexPage = ({ location, data }) => {
   // Site Global Variables.
@@ -33,6 +34,8 @@ const IndexPage = ({ location, data }) => {
     allFile: { nodes },
   } = data
 
+  const fluidImg = orderImg(nodes)
+
   // Logo Img.
   const logoImg = nodes[0]?.childImageSharp?.fluid
 
@@ -47,27 +50,17 @@ const IndexPage = ({ location, data }) => {
   // Hook to handle mobile or web view.
   const { windowWidth } = useWindowWidth()
 
-  const bgImg = setCondition(
-    windowWidth,
-    mobile,
-    webBgImage,
-    mobileBgImage,
-    big
-  )
-
-  const headerImg = setCondition(
-    windowWidth,
-    mobile,
-    webHeaderImg,
-    mobileHeaderImg,
-    big
-  )
-
   return (
     <Layout location={location}>
       <SEO title={home} />
-      <BackgroundImage fluid={bgImg} className={styles.bg}>
-        <Image image={headerImg} imgClass={styles.hero} />
+      <BackgroundImage
+        fluid={windowWidth > 500 ? fluidImg.bgWeb : fluidImg.bgMobile}
+        className={styles.bg}
+      >
+        <Image
+          image={windowWidth > 500 ? fluidImg.heroBgWeb : fluidImg.heroMobile}
+          imgClass={styles.hero}
+        />
         <Image image={logoImg} imgClass={styles.logo} />
       </BackgroundImage>
       <MobileBanner />

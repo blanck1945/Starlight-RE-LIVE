@@ -99,13 +99,7 @@ const CategoryTags = ({ display, redBtn }: CategoryTagsProps) => {
 
   const postContent = post.map((el: PostInterface) => {
     // Hook to manage conditional rendeting.
-    const { condition } = useCondition(
-      windowWidth,
-      mobile,
-      <p>aca va la image</p>,
-      null,
-      big
-    )
+    const { condition } = useCondition(windowWidth, mobile, null, null, big)
 
     return (
       <div key={el.id} className={styles.postContent}>

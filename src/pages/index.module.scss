@@ -1,17 +1,18 @@
 @import "../styles/variables";
 
+// Background image.
 .bg {
   @apply w-full;
   @apply absolute;
   @apply pt-2;
   height: 65vh;
   @media (min-width: $md-990) {
-    height: 84vh;
+    height: 89.5vh;
   }
 }
 
+// Shoujo image.
 .hero {
-  @apply h-full;
   @apply z-0;
   @media (min-width: $img-700) {
     @apply m-auto;
@@ -20,8 +21,8 @@
     width: 80%;
   }
   @media (min-width: $img-1650) {
-    width: 66%;
-    @apply mt-8;
+    width: 62%;
+    @apply mt-16;
   }
 }
 
@@ -31,6 +32,6 @@
     @apply z-30;
     @apply m-auto;
     width: 27%;
-    bottom: 365px;
+    bottom: 300px;
   }
 }

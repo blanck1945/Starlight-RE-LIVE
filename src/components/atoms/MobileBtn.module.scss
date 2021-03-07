@@ -1,42 +1,45 @@
 @import "../../styles/main";
+@import "../../styles/variables";
 
 .btn {
   @apply rounded-md;
   @apply flex;
-  @apply items-center;
   @apply text-white;
   @apply cursor-pointer;
-  @apply mb-2;
-  background-color: black;
-  width: 180px;
-  height: 50px;
+  @apply mx-3;
+  @apply bg-black;
+  transition: $ease-2;
+  max-width: 180px;
+  height: 55px;
 
-  p {
-    @apply px-2;
+  &:hover {
+    transition: $ease-2;
+    background-color: lighten($color: black, $amount: 15%);
   }
 
-  .icon {
-    width: 25%;
-    font-size: $font-icon;
-  }
-}
-
-.inner {
-  @apply h-full;
-  @apply flex;
-  @apply flex-col;
-  width: 75%;
-
-  p {
-    font-size: $font-small;
-    @apply px-0;
-    @apply mb-0;
-    height: 18px;
+  & > :first-child {
+    width: 30%;
+    font-size: 35px;
   }
 
-  span {
-    @apply mb-2;
-    @apply pl-1;
-    font-size: $font-20;
+  & > :nth-child(2) {
+    @apply h-full;
+    @apply flex;
+    @apply items-start;
+    @apply flex-col;
+    width: 70%;
+
+    & > :first-child {
+      @apply w-full;
+      @apply mb-0;
+      height: 35%;
+      font-size: 12px;
+    }
+
+    & > :last-child {
+      @apply mt-0;
+      font-size: 24px;
+      height: 65%;
+    }
   }
 }

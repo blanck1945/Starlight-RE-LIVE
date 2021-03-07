@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.btnDiv {
+  @apply flex;
+  @apply justify-evenly;
+  @apply w-full;
+  @apply pt-4;
+  @apply absolute;
+  background-color: darken($color: #ffffff, $amount: 6%);
+  height: 16%;
+  @media (min-width: $md-990) {
+    @apply absolute;
+    @apply z-50;
+    @apply pt-0;
+    left: 25%;
+    bottom: 8%;
+    height: 75px;
+    width: 55%;
+
+    div {
+      @apply flex;
+      @apply items-center;
+      width: 48%;
+    }
+  }
+}

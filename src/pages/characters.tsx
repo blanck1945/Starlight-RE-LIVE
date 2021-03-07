@@ -11,7 +11,7 @@ const characters = ({ location, data }) => {
   // Nodes from Query
   const {
     allStrapiSchool: { nodes: schools },
-  }
+  } = data
 
   // Site Global Variables.
   const {

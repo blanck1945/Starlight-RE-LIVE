@@ -1,30 +1,26 @@
 import React from "react"
 import MobileBtn from "../atoms/MobileBtn"
+import MobileBanner from "../atoms/mobileBanner"
 import Image from "../image"
 import styles from "./MobileDownload.module.scss"
 import { graphql, useStaticQuery } from "gatsby"
 import useWindowWidth from "../hooks/useWindowWidth"
+import mobileButtons, {
+  MobileButtonsInterface,
+} from "../../configuration/MobileButtons"
 
 const MobileDonwload = () => {
   const {
     allFile: { nodes: image },
-    allStrapiButton: { nodes: btn },
     allStrapiFeature: { nodes: feature },
   } = useStaticQuery(graphql`
     {
-      allStrapiButton {
-        nodes {
-          id
-          header
-          icon
-          acc
-        }
-      }
       allStrapiFeature {
         nodes {
           id
           name
           desc
+          value
         }
       }
       allFile(
@@ -47,16 +43,21 @@ const MobileDonwload = () => {
   const fluid = image[0].childImageSharp.fluid
   const { windowWidth } = useWindowWidth()
 
-  const btnDis = btn.map(({ icon, acc, header }) => {
-    return <MobileBtn icon={icon} acc={acc} header={header} key={header} />
-  })
+  // Displaing mobile buttons.
+  const btnDis = mobileButtons.map(
+    (button: MobileButtonsInterface, index: number) => {
+      return <MobileBtn {...button} key={index} />
+    }
+  )
 
-  const featureDis = feature.map(({ id, name, desc }) => {
+  const featureDis = feature.map(el => {
+    console.log(el)
     return (
-      <div key={id} className={styles.featureDiv}>
-        <span>{name}</span>
-        <p>{desc}</p>
-      </div>
+      <div
+        key={el.id}
+        className={styles.featureDiv}
+        dangerouslySetInnerHTML={{ __html: el.value }}
+      />
     )
   })
 
@@ -64,19 +65,21 @@ const MobileDonwload = () => {
     <div className={styles.mobileDiv}>
       {windowWidth > 500 ? (
         <>
-          <div className={styles.top}>
+          <div>
             <Image image={fluid} imgClass={styles.image} />
-            <div className={styles.center}>{featureDis}</div>
+            <div>
+              <div>{featureDis}</div>
+              <div>{btnDis}</div>
+            </div>
           </div>
-          <div className={styles.btnDiv}>{btnDis}</div>
         </>
       ) : (
         <>
-          <div className={styles.top}>
+          <div>
             <Image image={fluid} imgClass={styles.image} />
             <div className={styles.btnDiv}>{btnDis}</div>
           </div>
-          <div className={styles.center}>{featureDis}</div>
+          <div>{featureDis}</div>
           <div></div>
         </>
       )}

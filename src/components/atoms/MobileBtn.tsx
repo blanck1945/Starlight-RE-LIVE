@@ -1,27 +1,22 @@
 import React from "react"
+import { IconType } from "react-icons"
 import styles from "./MobileBtn.module.scss"
-import { SiGoogleplay } from "react-icons/si"
-import { AiOutlineApple } from "react-icons/ai"
 
-const MobileBtn = ({ icon, header, acc }) => {
-  const getIcon = () => {
-    switch (icon) {
-      case "SiGoogleplay":
-        return <SiGoogleplay className={styles.icon} />
-      case "AiOutlineApple":
-        return <AiOutlineApple className={styles.icon} />
-      default:
-        return <p>No Hay icono</p>
-    }
-  }
+interface MobileBtnProps {
+  icon: IconType
+  header: string
+  subHeader: string
+  link: string
+}
 
+const MobileBtn = ({ icon: Icon, header, subHeader, link }: MobileBtnProps) => {
   return (
     <div className={styles.btn}>
-      {getIcon()}
-      <div className={styles.inner}>
-        <p>{acc} </p>
+      <Icon />
+      <a href={link}>
+        <p>{subHeader} </p>
         <span>{header} </span>
-      </div>
+      </a>
     </div>
   )
 }

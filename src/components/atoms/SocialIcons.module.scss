@@ -9,21 +9,26 @@
   @apply mb-4;
   width: 40%;
   @media (min-width: $md-990) {
+    @apply mt-16;
+    width: 12%;
   }
 
-  .icons {
+  & > svg {
     @apply text-white;
     @apply p-3;
+    @apply cursor-pointer;
     height: 55px;
     width: 55px;
     border-radius: 50%;
-  }
+    @media (min-width: $md-990) {
+      width: 60px;
+      height: 60px;
+      transition: $ease-2;
 
-  .tw {
-    background-color: $twiiter;
-  }
-
-  .fb {
-    background-color: $facebook;
+      &:hover {
+        transition: $ease-2;
+        transform: translateY(-15%);
+      }
+    }
   }
 }
